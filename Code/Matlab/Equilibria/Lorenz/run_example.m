@@ -1,4 +1,3 @@
-
 % Add path for numerics (Newton) code
 addpath('../../Numerics') 
 
@@ -8,7 +7,6 @@ sigma = 10; rho = 28; beta = 8/3;
 % Define a function of x for fixed parameters
 g = @(x) f(x, sigma, rho, beta);
 Dg = @(x) Df(x, sigma, rho, beta);
-% Dg = @(x) JacobianFiniteDifferences(g, x);
 
 % Initial guess for Newton
 x0 = [8; 8; 25];

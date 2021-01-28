@@ -1,4 +1,3 @@
-
 % Add path for numerics (Newton) code
 addpath('../../Numerics')
 

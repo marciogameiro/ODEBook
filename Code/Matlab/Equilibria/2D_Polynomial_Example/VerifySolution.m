@@ -11,16 +11,17 @@ function [I, verified] = VerifySolution(f, Df, x_bar)
 
   % Compute A, the numerical inverse of Df
   A = inv(Df(x_bar));
-  % A = [-0.052 -0.018 0.059; 0.048 -0.018 0.059; -0.012 -0.118 0];
 
   % Compute the Y0 bound using the sup norm
   Y0 = norm(A * f(x_bar), Inf);
 
   % Compute the Z0 bound using the sup norm
   Z0 = norm(eye(size(A)) - A * Df(x_bar), Inf);
+  % Z0 = 0; % If using the the exact inverse
 
   % Compute the Z2 bound using the sup norm
-  Z2 = 2 * max([abs(A(1,2)) + abs(A(1,3)), abs(A(2,2)) + abs(A(2,3)), abs(A(3,2)) + abs(A(3,3))]);
+  Z2 = max(8 * abs(A(1,1)) + 2 * abs(A(1,2)), 8 * abs(A(2,1)) + 2 * abs(A(2,2)));
+  % Z2 = max(16*abs(x_bar(2))+2, 8+16*abs(x_bar(1)))/(abs(16*x_bar(1)*x_bar(2)-1));
 
   % Define the radii polynomial
   p = [Z2, -(1 - Z0), Y0];

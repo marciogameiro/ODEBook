@@ -1,4 +1,3 @@
-
 % Add path for numerics (Newton) code
 addpath('../../Numerics') 
 
@@ -37,7 +36,7 @@ for k = 1:4
   r_plus = I(2);
 
   if verified == true
-    disp('Verification was successful!')
+    disp('Verification successful!')
     disp(['The existence interval is I = (' num2str(r_minus, 16) ', ' num2str(r_plus, 16) ')'])
   else
     disp('Verification failed!')
